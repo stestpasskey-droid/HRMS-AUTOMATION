@@ -8,7 +8,7 @@ export async function openMenu(page: Page, menuName: string): Promise<void> {
   const menuButton = page.getByRole('button', { name: menuName });
   await menuButton.waitFor({ state: 'visible' });
   await menuButton.click();
-  await page.waitForTimeout(500); 
+  await page.waitForTimeout(500);
 }
 
 export async function navigateTo(
@@ -27,7 +27,7 @@ export async function navigateTo(
 
 export async function login(page: Page): Promise<void> {
   await page.goto('/');
-  
+
   const myActivities = page.getByRole('button', { name: 'My Activities' });
   if (await myActivities.isVisible({ timeout: 5000 }).catch(() => false)) {
     return;
@@ -36,7 +36,7 @@ export async function login(page: Page): Promise<void> {
   if (!page.url().includes('login')) {
     await page.goto('/auth/login');
   }
-  
+
   await page.getByRole('textbox', { name: 'Email *' }).fill('admin@hiqelectronics.com');
   await page.getByRole('textbox', { name: 'Enter your password' }).fill('Admin@123');
   await page.getByRole('button', { name: 'Sign In' }).click();

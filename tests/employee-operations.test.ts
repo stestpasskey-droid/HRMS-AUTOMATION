@@ -3,6 +3,9 @@ import { login } from './helpers';
 
 test.describe.configure({ mode: 'serial' });
 
+// Hardcoded slow motion (1000ms delay between actions)
+test.use({ launchOptions: { slowMo: 1000 } });
+
 let sharedPage: Page;
 
 test.beforeAll(async ({ browser }) => {
